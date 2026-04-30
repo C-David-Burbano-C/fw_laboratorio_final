@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Calificaciones</title>
+</head>
+<body>
+    <main>
+        <h1>Lista de Calificaciones</h1>
+        
+        <a href="{% url 'inicio' %}">Ir al Inicio</a> | 
+        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:crear_calificacion' %}">Crear Nueva Calificacion</a>
+        <br><br>
+
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Estudiante</th>
+                    <th>Identificacion</th>
+                    <th>Asignatura</th>
+                    <th>Nota 1</th>
+                    <th>Nota 2</th>
+                    <th>Nota 3</th>
+                    <th>Promedio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for calificacion in calificaciones %}
+                <tr>
+                    <td>{{ calificacion.nombre_estudiante }}</td>
+                    <td>{{ calificacion.identificacion }}</td>
+                    <td>{{ calificacion.asignatura }}</td>
+                    <td>{{ calificacion.nota1 }}</td>
+                    <td>{{ calificacion.nota2 }}</td>
+                    <td>{{ calificacion.nota3 }}</td>
+                    <td>{{ calificacion.promedio }}</td>
+                    <td>
+                        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:editar_calificacion' calificacion.id %}">Editar</a> |
+                        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:eliminar_calificacion' calificacion.id %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8">No hay calificaciones registradas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Promedio General: {{ promedio_general|default:"0.00" }}</h2>
+
+        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:promedio_general' %}">Ver Vista de Promedio General</a>
+    </main>
+</body>
+</html>

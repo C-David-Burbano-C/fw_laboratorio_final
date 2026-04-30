@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promedio General</title>
+</head>
+<body>
+    <main>
+        <h1>Promedio General de Todas las Calificaciones</h1>
+        
+        <h2>El promedio general actual es: <strong>{{ promedio_general|default:"0.00" }}</strong></h2>
+        
+        <br>
+        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:listar_calificaciones' %}">Volver a la lista de calificaciones</a>
+    </main>
+</body>
+</html>

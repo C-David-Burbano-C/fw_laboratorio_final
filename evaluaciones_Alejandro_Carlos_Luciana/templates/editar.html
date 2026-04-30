@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Calificacion</title>
+</head>
+<body>
+    <main>
+        <h1>Editar Calificacion de {{ form.instance.nombre_estudiante }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Actualizar</button>
+        </form>
+        <br>
+        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:listar_calificaciones' %}">Cancelar y volver a la lista</a>
+    </main>
+</body>
+</html>
