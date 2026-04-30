@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Calificacion(models.Model):
     nombre_estudiante = models.CharField(max_length=150)
     identificacion = models.CharField(max_length=15)
@@ -10,7 +11,7 @@ class Calificacion(models.Model):
     promedio = models.DecimalField(max_digits=5, decimal_places=2, editable=False)
 
     def calcular_promedio(self):
-        return (self.nota1 + self.nota2 + self.nota3) / 3
+        return round((self.nota1 + self.nota2 + self.nota3) / 3, 2)
 
     def save(self, *args, **kwargs):
         self.promedio = self.calcular_promedio()
