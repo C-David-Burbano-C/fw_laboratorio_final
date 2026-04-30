@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Calificaciones{% endblock %}
+
+{% block content %}
+    <h1>Listado de Calificaciones</h1>
+    
+    <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:crear_calificacion' %}" class="btn-primary">+ Nueva Calificación</a>
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Estudiante</th>
+                    <th>ID</th>
+                    <th>Asignatura</th>
+                    <th>N1</th>
+                    <th>N2</th>
+                    <th>N3</th>
+                    <th>Promedio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for calificacion in calificaciones %}
+                <tr>
+                    <td style="font-weight: 600;">{{ calificacion.nombre_estudiante }}</td>
+                    <td style="color: var(--text-muted);">{{ calificacion.identificacion }}</td>
+                    <td>{{ calificacion.asignatura }}</td>
+                    <td>{{ calificacion.nota1 }}</td>
+                    <td>{{ calificacion.nota2 }}</td>
+                    <td>{{ calificacion.nota3 }}</td>
+                    <td style="font-weight: 700; color: var(--primary-color);">{{ calificacion.promedio }}</td>
+                    <td>
+                        <div class="action-links">
+                            <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:editar_calificacion' calificacion.id %}" class="action-edit">Editar</a>
+                            <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:eliminar_calificacion' calificacion.id %}" class="action-delete">Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" style="text-align: center; padding: 2rem; color: var(--text-muted);">No hay calificaciones registradas en el sistema.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="stats-card">
+        <h2>Promedio General de la Institución</h2>
+        <div class="number">{{ promedio_general|default:"0.00"|floatformat:2 }}</div>
+        <br>
+        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:promedio_general' %}" style="color: white; text-decoration: underline; font-size: 0.9rem;">Ver vista detallada del promedio</a>
+    </div>
+{% endblock %}

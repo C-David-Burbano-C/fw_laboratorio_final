@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Evaluaciones{% endblock %}
+
+{% block container_class %}small{% endblock %}
+
+{% block content %}
+    <h1>Bienvenido</h1>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">
+        Proyecto de evaluaciones funcionando correctamente. Selecciona una opción en el menú superior para comenzar.
+    </p>
+
+    <div class="flex-center">
+        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:listar_calificaciones' %}" class="btn-primary">Ver Calificaciones</a>
+        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:crear_calificacion' %}" class="btn-secondary">Añadir Nueva</a>
+    </div>
+{% endblock %}

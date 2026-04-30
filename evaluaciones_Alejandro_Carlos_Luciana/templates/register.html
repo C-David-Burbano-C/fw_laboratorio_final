@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Registro - Evaluaciones{% endblock %}
+
+{% block container_class %}small{% endblock %}
+
+{% block content %}
+    <h1>Crear Cuenta</h1>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">
+        Registra un usuario para ingresar al sistema de calificaciones.
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-primary" style="margin-top: 1rem;">Registrarse</button>
+    </form>
+
+    <div class="flex-center">
+        <a href="{% url 'login' %}" class="btn-secondary">Ya tengo cuenta</a>
+    </div>
+{% endblock %}

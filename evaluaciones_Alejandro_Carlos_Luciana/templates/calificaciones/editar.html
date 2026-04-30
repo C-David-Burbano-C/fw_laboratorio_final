@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Calificacion{% endblock %}
+
+{% block container_class %}small{% endblock %}
+
+{% block content %}
+    <h1>Editar Calificación</h1>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Modificando los datos de <strong>{{ form.instance.nombre_estudiante }}</strong>.</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <div class="flex-center">
+            <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:listar_calificaciones' %}" class="btn-secondary">Cancelar</a>
+            <button type="submit" class="btn-primary">Actualizar Registro</button>
+        </div>
+    </form>
+{% endblock %}
