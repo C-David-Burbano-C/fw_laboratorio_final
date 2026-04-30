@@ -1,21 +1,20 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Calificacion</title>
-</head>
-<body>
-    <main>
-        <h1>Eliminar Calificacion</h1>
-        <p>¿Estas seguro de que deseas eliminar la calificacion de <strong>{{ calificacion.nombre_estudiante }}</strong> en <strong>{{ calificacion.asignatura }}</strong>?</p>
-        
-        <form method="post">
-            {% csrf_token %}
-            <button type="submit">Si, eliminar</button>
-        </form>
-        <br>
-        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:listar_calificaciones' %}">Cancelar y volver a la lista</a>
-    </main>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Calificacion{% endblock %}
+
+{% block container_class %}small{% endblock %}
+
+{% block content %}
+    <h1 style="color: var(--danger-color);">Eliminar Registro</h1>
+    <div style="background: #fee2e2; border-left: 4px solid var(--danger-color); padding: 1.5rem; margin-bottom: 2rem; border-radius: 4px;">
+        <p style="margin: 0; color: #991b1b; line-height: 1.5;">
+            ¿Estás completamente seguro de que deseas eliminar la calificación de <strong>{{ calificacion.nombre_estudiante }}</strong> en la asignatura de <strong>{{ calificacion.asignatura }}</strong>? Esta acción no se puede deshacer.
+        </p>
+    </div>
+    
+    <form method="post" style="display: flex; justify-content: center; gap: 1rem; flex-direction: row;">
+        {% csrf_token %}
+        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:listar_calificaciones' %}" class="btn-secondary">Cancelar</a>
+        <button type="submit" class="btn-danger">Sí, Eliminar Definitivamente</button>
+    </form>
+{% endblock %}

@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-</head>
-<body>
-    <main>
-        <h1>Bienvenido, {{ request.user.username }}</h1>
-        <p>Proyecto de evaluaciones funcionando correctamente.</p>
+{% extends 'base.html' %}
 
-        <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit">Cerrar sesion</button>
-        </form>
-    </main>
-</body>
-</html>
+{% block title %}Inicio - Evaluaciones{% endblock %}
+
+{% block container_class %}small{% endblock %}
+
+{% block content %}
+    <h1>Bienvenido</h1>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">
+        Proyecto de evaluaciones funcionando correctamente. Selecciona una opción en el menú superior para comenzar.
+    </p>
+
+    <div class="flex-center">
+        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:listar_calificaciones' %}" class="btn-primary">Ver Calificaciones</a>
+        <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:crear_calificacion' %}" class="btn-secondary">Añadir Nueva</a>
+    </div>
+{% endblock %}
