@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <main>
-        <h1>Iniciar sesion</h1>
+{% extends 'base.html' %}
 
-        {% if form.errors %}
-            <p>Usuario o contrasena incorrectos.</p>
-        {% endif %}
+{% block title %}Iniciar Sesion - Evaluaciones{% endblock %}
 
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Entrar</button>
-        </form>
-    </main>
-</body>
-</html>
+{% block container_class %}small{% endblock %}
+
+{% block content %}
+    <h1>Iniciar Sesión</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-primary" style="margin-top: 1rem;">Ingresar</button>
+    </form>
+{% endblock %}

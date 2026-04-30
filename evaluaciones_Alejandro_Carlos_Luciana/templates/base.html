@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Evaluaciones{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'inicio' %}" class="navbar-brand">Evaluaciones</a>
+        <div class="navbar-links">
+            {% if user.is_authenticated %}
+                <span>Hola, {{ user.username }}</span>
+                <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:listar_calificaciones' %}">Ver Calificaciones</a>
+                <a href="{% url 'calificaciones_Alejandro_Carlos_Luciana:crear_calificacion' %}">Nueva Calificacion</a>
+                <form method="post" action="{% url 'logout' %}" style="display: inline; margin: 0; padding: 0; flex-direction: row; gap: 0;">
+                    {% csrf_token %}
+                    <button type="submit" style="color: var(--danger-color);">Cerrar Sesion</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Iniciar Sesion</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="container {% block container_class %}{% endblock %}">
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
