@@ -1,0 +1,6 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "deploy": {
+    "startCommand": "python evaluaciones_Alejandro_Carlos_Luciana/manage.py migrate --noinput && python evaluaciones_Alejandro_Carlos_Luciana/manage.py collectstatic --noinput && gunicorn --chdir evaluaciones_Alejandro_Carlos_Luciana evaluaciones_Alejandro_Carlos_Luciana.wsgi:application --bind 0.0.0.0:$PORT"
+  }
+}
